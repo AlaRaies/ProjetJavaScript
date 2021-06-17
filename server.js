@@ -1,0 +1,28 @@
+'use strict';
+const express = require('express');
+const app = express();
+const port = 3000;
+const connectionString = "mongodb+srv://zaineb:UGzN0ofw7HCJX3qY@cluster0.2eprr.mongodb.net/projetjavascript?retryWrites=true&w=majority";
+const dotenv = require('dotenv');
+dotenv.config();
+const mongoose =  require("mongoose");
+const bodyParser =  require("body-parser");
+//connection to database 
+mongoose.connect(connectionString, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+.then(res => console.log(`Connection Succesful ${res}`))
+.catch(err => console.log(`Error in DB connection ${err}`));
+
+//body-parser config;
+app.use(express.json());
+app.use(bodyParser.urlencoded({extended: true }));
+app.use(bodyParser.json());
+
+//configuration of routes 
+app.get("/", (req, res) => {
+    res.send(`<h1>Hello!</h1>`)
+});
+
+//lunching the app @ port 3000
+app.listen(port, () => {
+    console.log(`Application is listening at port ${port}`);
+});
