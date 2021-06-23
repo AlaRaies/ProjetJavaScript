@@ -33,7 +33,7 @@ exports.findAllUsers = function (req, res) {
 
 }
 exports.findUserById = function (req, res) {
-    let userId = req.body['id'];
+    let userId = req.query['id'];
     userService.findUserById(userId)
         .then(result => { res.send(result) })
         .catch(err => { res.status(400).send(err) })

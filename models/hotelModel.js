@@ -6,4 +6,5 @@ exports.hotelModel = {
     priceR1 : Number,
     priceR2 : Number,
     priceR3 : Number,
+    image : String,
 }

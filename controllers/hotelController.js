@@ -17,7 +17,7 @@ exports.findAllHotels = function (req, res) {
 
 }
 exports.findHotelById = function (req, res) {
-    let hotelId = req.body['id'];
+    let hotelId = req.query['id'];
     hotelServices.findHotelById(hotelId)
         .then(result => { res.send(result) })
         .catch(err => { res.status(400).send(err) })
